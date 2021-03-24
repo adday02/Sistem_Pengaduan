@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard');
+    });
+    Route::get('/admin', function () {
+        return view('admin/admin');
+    });
+    Route::get('/masyarakat', function () {
+        return view('admin/masyarakat');
+    });
+    Route::get('/pengaduan', function () {
+        return view('admin/pengaduan');
+    });
+    Route::get('/berita', function () {
+        return view('admin/berita');
+    });
+});
+
