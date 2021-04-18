@@ -34,3 +34,12 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+Route::prefix('masyarakat')->group(function () {
+    Route::get('/pengaduan', function () {
+        return view('masyarakat/pengaduan');
+    });
+    Route::get('/profile', function () {
+        return view('masyarakat/profile');
+    });
+});
+

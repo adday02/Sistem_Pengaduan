@@ -14,6 +14,7 @@
     <!-- Custom CSS -->
     
     <link href="../css/style.css" rel="stylesheet">
+    
 </head>
 
 <body class="header-fix fix-sidebar">
@@ -31,8 +32,6 @@
                     </a>
                 </div>
                 <!-- End Logo -->
-
-
                 <div class="navbar-collapse">
                     <!-- toggle and nav items -->
                     <ul class="navbar-nav mr-auto mt-md-0">
@@ -45,7 +44,7 @@
                             <div class="dropdown-menu dropdown-menu-right animated slideInRight">
                                 <ul class="dropdown-user">
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"> Profile</a></li>
+                                    <li><a href="{{URL('/masyarakat/profile')}}"> Profile</a></li>
                                     <li><a href="#"> Logout</a></li>
                                 </ul>
                             </div>
@@ -62,23 +61,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebar-menu">
-                        <li class="nav-devider"></li>
-                        <li class="nav-label">Home</li>
-                        <li> <a href="{{URL('/admin/dashboard')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
-                        </li>
-                        <li class="nav-label">Users</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Users</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{URL('/admin/admin')}}">Admin</a></li>
-                                <li><a href="{{URL('/admin/masyarakat')}}">Masyarakat</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-label">Features</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Features</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{URL('/admin/pengaduan')}}">Pengaduan</a></li>
-                                <li><a href="{{URL('/admin/berita')}}">Berita</a></li>
-                            </ul>
+                        <li> <a href="{{URL('/masyarakat/pengaduan')}}"><i class="fa fa-book"></i><span>Pengaduan</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -118,5 +101,4 @@
     <script src="../js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script src="../js/lib/datatables/datatables-init.js"></script>
 </body>
-
 </html>
