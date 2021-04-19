@@ -9,7 +9,11 @@ use Carbon\Carbon;
 class BeritaModel extends Model
 {
     protected $table = "berita";
-    protected $fillable =['id_berita','judul','deskripsi_berita','foto','tgl_berita'];
+    protected $fillable =['id_berita','id_admin','judul','deskripsi','foto','tgl'];
+
+    public function AdminModel(){
+        return $this->belongsTo('App\Models\AdminModel', 'id_admin');
+    }
 
     public function getCreatedAtAttribute(){
         return \Carbon\Carbon::parse($this->attributes['created_at'])->format('d M');

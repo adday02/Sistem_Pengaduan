@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class SuperAdminModel extends Model
 {
     protected $table = "super_admin";
-    protected $fillable =['id_super','username','password'];
+    protected $fillable =['id_super','password'];
 }
