@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('admin')->group(function () {
+Route::prefix('superadmin')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin/dashboard');
     });
@@ -42,4 +42,27 @@ Route::prefix('masyarakat')->group(function () {
         return view('masyarakat/profile');
     });
 });
+
+//ADMIN
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard');
+    });
+    
+    Route::get('/berita', function () {
+        return view('admin/berita');
+    });
+    
+    Route::get('/pengaduan', function () {
+        return view('admin/pengaduan');
+    });
+   });
+
+
+// MENU HOME UTAMA
+use App\Http\Controllers\HomeController;
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/tentangkami', [HomeController::class, 'tentangkami'])->name('tentangkami');
+Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
+Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 

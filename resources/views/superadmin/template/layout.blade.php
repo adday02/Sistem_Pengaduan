@@ -27,11 +27,7 @@
                 <!-- Logo -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon -->
-                        <b><img src="../images/logo.png" alt="homepage" class="dark-logo" /></b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span><img src="../images/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                        <span>Sistem Pengaduan</span>
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -70,7 +66,13 @@
                         <li class="nav-label">Home</li>
                         <li> <a href="{{URL('/admin/dashboard')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
                         </li>
-                        
+                        <li class="nav-label">Users</li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Users</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{URL('/admin/admin')}}">Admin</a></li>
+                                <li><a href="{{URL('/admin/masyarakat')}}">Masyarakat</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-label">Features</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Features</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -86,17 +88,6 @@
         </div>
         <!-- End Left Sidebar  -->
         @yield('content')
-        <!-- footer content -->
-        <footer>
-          <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - 
-              <b>Dinas Kecamatan Mangga Kulon</b>
-            </span>
-          </div>
-        </div>
-        </footer>
-        <!-- /footer content -->
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->

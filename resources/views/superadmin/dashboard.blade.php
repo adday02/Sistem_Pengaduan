@@ -18,8 +18,32 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div class="row">
-                    
-                    
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="stat-widget-two">
+                                <div class="stat-content">
+                                    <div class="stat-text">Admin</div>
+                                    <div class="stat-digit text-success"> <i class="fa fa-user"></i>  13</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success w-100" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="stat-widget-two">
+                                <div class="stat-content">
+                                    <div class="stat-text">Masyarakat</div>
+                                    <div class="stat-digit text-primary"> <i class="fa fa-users"></i>  8</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary w-100" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-3">
                         <div class="card">
                             <div class="stat-widget-two">
@@ -52,4 +76,4 @@
             </div>
         </div>
                 <!-- /# row -->
-          @endsection
+    @endsection
