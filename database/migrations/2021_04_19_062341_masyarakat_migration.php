@@ -14,7 +14,7 @@ class MasyarakatMigration extends Migration
     public function up()
     {
         Schema::create('masyarakat', function (Blueprint $table){
-            $table->increments('nik');
+            $table->string('nik');
             $table->string('nama');
              $table->string('jk');
               $table->string('alamat');

@@ -15,7 +15,7 @@ class PengaduanMigration extends Migration
     {
         Schema::create('pengaduan', function (Blueprint $table){
             $table->increments('id_pengaduan');
-            $table->UnsignedBigInteger('nik')->unsigned();
+            $table->string('nik')->unsigned();
             $table->foreign('nik')->references('nik')->on('masyarakat');
            $table->date('tgl_pengaduan');
            $table->string('foto');

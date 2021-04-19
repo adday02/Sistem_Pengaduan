@@ -18,19 +18,19 @@ Route::get('/', function () {
 });
 Route::prefix('superadmin')->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin/dashboard');
+        return view('superadmin/dashboard');
     });
     Route::get('/admin', function () {
-        return view('admin/admin');
+        return view('superadmin/admin');
     });
     Route::get('/masyarakat', function () {
-        return view('admin/masyarakat');
+        return view('superadmin/masyarakat');
     });
     Route::get('/pengaduan', function () {
-        return view('admin/pengaduan');
+        return view('superadmin/pengaduan');
     });
     Route::get('/berita', function () {
-        return view('admin/berita');
+        return view('superadmin/berita');
     });
 });
 
