@@ -1,4 +1,4 @@
-@extends('admin.template.layout')
+@extends('superadmin.template.layout')
 @section('title','Admin' )
 @section('content')
         <div class="page-wrapper">
