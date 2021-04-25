@@ -9,6 +9,7 @@ use Carbon\Carbon;
 class BeritaModel extends Model
 {
     protected $table = "berita";
+    protected $primaryKey = 'id_berita';
     protected $fillable =['id_berita','id_admin','judul','deskripsi','foto','tgl'];
 
     public function AdminModel(){

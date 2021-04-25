@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SuperAdmin_dashboardController;
+use App\Http\Controllers\SuperAdmin_adminController;
+use App\Http\Controllers\SuperAdmin_masyarakatController;
+use App\Http\Controllers\SuperAdmin_beritaController;
+use App\Http\Controllers\SuperAdmin_pengaduanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,25 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::prefix('superadmin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('superadmin/dashboard');
-    });
-    Route::get('/admin', function () {
-        return view('superadmin/admin');
-    });
-    Route::get('/masyarakat', function () {
-        return view('superadmin/masyarakat');
-    });
-    Route::get('/pengaduan', function () {
-        return view('superadmin/pengaduan');
-    });
-    Route::get('/berita', function () {
-        return view('superadmin/berita');
-    });
+    Route::resource('admin',SuperAdmin_adminController::class);
+    Route::resource('masyarakat',SuperAdmin_masyarakatController::class);
+    Route::resource('berita',SuperAdmin_beritaController::class);
+    Route::resource('pengaduan',SuperAdmin_pengaduanController::class);
+    Route::resource('dashboard',SuperAdmin_dashboardController::class);
 });
 
 Route::prefix('masyarakat')->group(function () {

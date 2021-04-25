@@ -9,6 +9,7 @@ use Carbon\Carbon;
 class PengaduanModel extends Model
 {
     protected $table = "pengaduan";
+    protected $primaryKey = 'id_pengaduan';
     protected $fillable =['id_pengaduan','nik','deskripsi','lokasi','foto','tgl','status'];
 
     public function MasyarakatModel(){
