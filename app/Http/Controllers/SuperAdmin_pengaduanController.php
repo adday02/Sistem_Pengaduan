@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pengaduan;
+use App\Models\PengaduanModel;
 
 class SuperAdmin_pengaduanController extends Controller
 {
     public function index()
     {
-        $pengaduans = Pengaduan::all();
+        $pengaduans = PengaduanModel::all();
         return view('superadmin/pengaduan',compact('pengaduans'))->with('i');
     }
     
@@ -27,37 +27,23 @@ class SuperAdmin_pengaduanController extends Controller
             'status'=>$request->status,
             'foto'=>$new_name,
         );
-        Pengaduan::create($data);
+        PengaduanModel::create($data);
         return redirect('superadmin\pengaduan')->with('success','pengaduan berhasil ditambah');
     }
     
     public function update(Request $request, $id)
-    {
-        $foto = $request->file('foto');
-        if($request->hasFile('foto'))
-        {
-            $new_name = rand().'.'.$foto->getClientOriginalExtension();
-            $foto->move(public_path('foto'), $new_name);
-            $data = array(            
-                'foto'=>$new_name,
-            );
-        Pengaduan::whereid_pengaduan($id)->update($data);
-        }
-            $data = array(
-                'nik'=>$request->nik,
-                'deskripsi'=>$request->deskripsi,
-                'lokasi'=>$request->lokasi,
-                'tgl'=>$request->tgl,
-                'status'=>$request->status,
-            );
-        Pengaduan::whereid_pengaduan($id)->update($data);
+    {            
+        $data = array(
+            'status'=>$request->status,
+        );
+        PengaduanModel::whereid_pengaduan($id)->update($data);
         return redirect('superadmin/pengaduan');
     }
 
     public function destroy($id)
     {
         try{
-            $datas = Pengaduan::findOrfail($id);
+            $datas = PengaduanModel::findOrfail($id);
             $datas->delete();
             return redirect('superadmin/pengaduan')->with('success','Pengaduan Berhasil Dihapus');
         }catch(\Throwable $th){

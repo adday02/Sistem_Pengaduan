@@ -75,7 +75,7 @@
         </div>
             <!-- End Container fluid  -->
 
-            <div id="tambah" class="modal fade" role="dialog">
+<div id="tambah" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- konten modal-->
         <div class="modal-content">

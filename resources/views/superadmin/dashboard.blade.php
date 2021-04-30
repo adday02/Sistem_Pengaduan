@@ -23,7 +23,7 @@
                             <div class="stat-widget-two">
                                 <div class="stat-content">
                                     <div class="stat-text">Admin</div>
-                                    <div class="stat-digit text-success"> <i class="fa fa-user"></i>  13</div>
+                                    <div class="stat-digit text-success"> <i class="fa fa-user"></i>{{$admins}}</div>
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-success w-100" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
@@ -36,7 +36,7 @@
                             <div class="stat-widget-two">
                                 <div class="stat-content">
                                     <div class="stat-text">Masyarakat</div>
-                                    <div class="stat-digit text-primary"> <i class="fa fa-users"></i>  8</div>
+                                    <div class="stat-digit text-primary"> <i class="fa fa-users"></i>{{$masyarakats}}</div>
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-primary w-100" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
@@ -49,7 +49,7 @@
                             <div class="stat-widget-two">
                                 <div class="stat-content">
                                     <div class="stat-text">Pengaduan</div>
-                                    <div class="stat-digit text-warning"> <i class="fa fa-bullhorn"></i>  26</div>
+                                    <div class="stat-digit text-warning"> <i class="fa fa-bullhorn"></i>  {{$pengaduans}}</div>
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-warning w-100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -62,7 +62,7 @@
                             <div class="stat-widget-two">
                                 <div class="stat-content">
                                     <div class="stat-text">Berita</div>
-                                    <div class="stat-digit color-danger text-orange"> <i class="fa fa-newspaper-o"></i>  3</div>
+                                    <div class="stat-digit color-danger text-orange"> <i class="fa fa-newspaper-o"></i> {{$beritas}}</div>
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-danger w-100" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>

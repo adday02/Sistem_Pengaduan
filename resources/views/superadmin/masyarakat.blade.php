@@ -1,15 +1,15 @@
 @extends('superadmin.template.layout')
 @section('title','masyarakat' )
 @section('content')
-        <div class="page-wrapper">
+<div class="page-wrapper">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Masyarakat</h3> </div>
+                    <h3 class="text-primary">Masayrakat</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                        <li class="breadcrumb-item active">Masyarakat</li>
+                        <li class="breadcrumb-item active">Masayrakat</li>
                     </ol>
                 </div>
             </div>
@@ -22,25 +22,27 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Data Export</h4>
-                                <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >+ Tambah masyarakat</button></div> 
+                                <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >+ Tambah Admin</button></div> 
                                 <div class="table-responsive m-t-40">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>No Hp </th>
-                                                <th>Foto</th>
-                                                <th>Aksi</th>
+                                                <th width = "5%">No</th>
+                                                <th width="25%">Nama</th>
+                                                <th width="10%">JK</th>
+                                                <th width="10%">No HP</th>
+                                                <th width="25%">Alamat</th>
+                                                <th width="15">Foto</th>
+                                                <th width="10%">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>No Hp </th>
+                                                <th>JK</th>
+                                                <th>No HP</th>
+                                                <th>Alamat</th>
                                                 <th>Foto</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -78,6 +80,7 @@
             </div>
         </div>
             <!-- End Container fluid  -->
+
  <div id="tambah" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- konten modal-->

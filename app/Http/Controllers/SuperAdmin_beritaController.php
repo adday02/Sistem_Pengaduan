@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Berita;
+use App\Models\BeritaModel;
 
 class SuperAdmin_beritaController extends Controller
 {
     public function index()
     {
-        $beritas = Berita::all();
+        $beritas = BeritaModel::all();
         return view('superadmin/berita',compact('beritas'))->with('i');
     }
     
@@ -26,7 +26,7 @@ class SuperAdmin_beritaController extends Controller
             'foto'=>$new_name,
             'tgl'=>$request->tgl,
         );
-        Berita::create($data);
+        BeritaModel::create($data);
         return redirect('superadmin\berita')->with('success','berita berhasil ditambah');
     }
     
@@ -40,7 +40,7 @@ class SuperAdmin_beritaController extends Controller
             $data = array(            
                 'foto'=>$new_name,
             );
-        Berita::whereid_berita($id)->update($data);
+        BeritaModel::whereid_berita($id)->update($data);
         }
             $data = array(
                 'id_admin'=>$request->id_admin,
@@ -48,14 +48,14 @@ class SuperAdmin_beritaController extends Controller
                 'deskripsi'=>$request->deskripsi,
                 'tgl'=>$request->tgl,
             );
-        Berita::whereid_berita($id)->update($data);
+        BeritaModel::whereid_berita($id)->update($data);
         return redirect('superadmin/berita');
     }
 
     public function destroy($id)
     {
         try{
-            $datas = Berita::findOrfail($id);
+            $datas = BeritaModel::findOrfail($id);
             $datas->delete();
             return redirect('superadmin/berita')->with('success','berita Berhasil Dihapus');
         }catch(\Throwable $th){
