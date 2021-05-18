@@ -67,7 +67,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <a class="nav-link" href="/kontak">Kontak Kami</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
             </ul>
           </div>

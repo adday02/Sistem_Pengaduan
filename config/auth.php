@@ -46,6 +46,39 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'superadmin' => [
+            'driver' => 'session',
+            'provider' => 'superadmin',
+        ],
+
+        'apisuperadmin' => [
+            'driver' => 'token',
+            'provider' => 'superadmin',
+            'hash' => false,
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+
+        'apiadmin' => [
+            'driver' => 'token',
+            'provider' => 'admin',
+            'hash' => false,
+        ],
+
+        'masyarakat' => [
+            'driver' => 'session',
+            'provider' => 'masyarakat',
+        ],
+
+        'apimasyarakat' => [
+            'driver' => 'token',
+            'provider' => 'masyarakat',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +102,21 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'superadmin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Login_superadmin::class,
+        ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Login_admin::class,
+        ],
+
+        'masyarakat' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Login_masyarakat::class,
         ],
 
         // 'users' => [

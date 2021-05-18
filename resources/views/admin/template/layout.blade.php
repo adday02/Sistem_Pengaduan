@@ -50,7 +50,7 @@
                                 <ul class="dropdown-user">
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"> Profile</a></li>
-                                    <li><a href="#"> Logout</a></li>
+                                    <li><a href="{{URL('/keluar')}}"> Logout</a></li>
                                 </ul>
                             </div>
                         </li>

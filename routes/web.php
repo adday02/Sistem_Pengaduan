@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SuperAdmin_dashboardController;
 use App\Http\Controllers\SuperAdmin_adminController;
 use App\Http\Controllers\SuperAdmin_masyarakatController;
 use App\Http\Controllers\SuperAdmin_beritaController;
 use App\Http\Controllers\SuperAdmin_pengaduanController;
+use App\Http\Controllers\Admin_beritaController;
+use App\Http\Controllers\Admin_PengaduanController;
+use App\Http\Controllers\Admin_dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,19 +41,17 @@ Route::prefix('masyarakat')->group(function () {
 
 //ADMIN
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin/dashboard');
-    });
-    
-    Route::get('/berita', function () {
-        return view('admin/berita');
-    });
-    
-    Route::get('/pengaduan', function () {
-        return view('admin/pengaduan');
-    });
+    Route::resource('berita',Admin_beritaController::class);
+    Route::resource('pengaduan',Admin_PengaduanController::class);
+    Route::resource('dashboard',Admin_dashboardController::class);
    });
 
+Route::get('login', function () {
+    return view('login');
+})->middleware('guest');
+
+Route::post('/kirimdata',[LoginController::class,'masuk'])->name('login');
+Route::get('/keluar',[LoginController::class,'keluar']);
 
 // MENU HOME UTAMA
 use App\Http\Controllers\HomeController;
