@@ -10,6 +10,9 @@ use App\Http\Controllers\SuperAdmin_pengaduanController;
 use App\Http\Controllers\Admin_beritaController;
 use App\Http\Controllers\Admin_PengaduanController;
 use App\Http\Controllers\Admin_dashboardController;
+use App\Http\Controllers\Masyarakat_pengaduanController;
+ 
+use App\Http\Controllers\Masyarakat_profileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,7 @@ use App\Http\Controllers\Admin_dashboardController;
 |
 */
 
-Route::prefix('superadmin')->group(function () {
+Route::group(['prefix'=> 'superadmin',  'middleware'=> 'auth:superadmin'], function(){
     Route::resource('admin',SuperAdmin_adminController::class);
     Route::resource('masyarakat',SuperAdmin_masyarakatController::class);
     Route::resource('berita',SuperAdmin_beritaController::class);
@@ -30,17 +33,15 @@ Route::prefix('superadmin')->group(function () {
     Route::resource('dashboard',SuperAdmin_dashboardController::class);
 });
 
-Route::prefix('masyarakat')->group(function () {
-    Route::get('/pengaduan', function () {
-        return view('masyarakat/pengaduan');
-    });
-    Route::get('/profile', function () {
-        return view('masyarakat/profile');
-    });
+Route::group(['prefix'=> 'masyarakat',  'middleware'=> 'auth:masyarakat'], function() {
+    Route::resource('pengaduan-ms',Masyarakat_pengaduanController::class);
+    
+    Route::resource('profile-masyarakat',Masyarakat_profileController::class);
+    
 });
 
 //ADMIN
-Route::prefix('admin')->group(function () {
+Route::group(['prefix'=> 'admin',  'middleware'=> 'auth:admin'], function()  {
     Route::resource('berita',Admin_beritaController::class);
     Route::resource('pengaduan',Admin_PengaduanController::class);
     Route::resource('dashboard',Admin_dashboardController::class);

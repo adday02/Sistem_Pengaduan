@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PengaduanModel;
-use App\Models\MasyarakatModel;
+
 
 class Admin_pengaduanController extends Controller
 {
@@ -16,10 +16,7 @@ class Admin_pengaduanController extends Controller
     public function index()
     {
         $pengaduan = PengaduanModel::all();
-        $masyarakat = MasyarakatModel::all();
-        
-        
-        return view('admin/pengaduan',compact('pengaduan', 'masyarakat'))->with('i');
+       return view('admin/pengaduan',compact('pengaduan'))->with('i');
     }
 
     /**

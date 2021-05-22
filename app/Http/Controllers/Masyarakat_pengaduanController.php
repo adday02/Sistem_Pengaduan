@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PengaduanModel;
-use App\MOdels\MasyarakatModel;
+
 
 class Masyarakat_pengaduanController extends Controller
 {
@@ -39,22 +39,31 @@ class Masyarakat_pengaduanController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            
+            'foto' => 'required|image:jpeg,jpg,png'
+        ], [
+            'foto.required'         => 'Foto wajib diisi.',
+            'foto.image'            => 'Foto tidak valid.',
+        ]);
+
+    $validatedData['foto'] = ($validatedData['foto']);
         $foto = $request->file('foto');
         $new_name = rand().'.'.$foto->getClientOriginalExtension();
         $foto->move(public_path('foto'), $new_name);
 
         $data = array(
-            'id_pengaduan'=>$request->id_pengaduan,
+         
             'nik'=>$request->nik, 
             'deskripsi'=>$request->deskripsi,
             'lokasi'=>$request->lokasi,
             'foto'=>$new_name,
-            'status'=>$request->status,
+            'status'=>'Dalam Pengajuan',
             
            
         );
         PengaduanModel::create($data);
-        return redirect('masyarakat/pengaduan')->with('success','Berita berhasil ditambah');
+        return redirect('masyarakat/pengaduan-ms')->with('success','Berita berhasil ditambah');
     }
 
     /**
@@ -101,16 +110,15 @@ class Masyarakat_pengaduanController extends Controller
 
         $data = array(
             
-            'nik'=>$request->nik, 
+            
             'deskripsi'=>$request->deskripsi,
             'lokasi'=>$request->lokasi,
             'foto'=>$new_name,
-            'status'=>$request->status,
-            
+           
            
         );
         PengaduanModel::whereid_pengaduan($id)->update($data);
-        return redirect('masyarakat/pengaduan');
+        return redirect('masyarakat/pengaduan-ms');
     }
 
     /**
@@ -124,9 +132,9 @@ class Masyarakat_pengaduanController extends Controller
         try{
             $datas = PengaduanModel::findOrfail($id);
             $datas->delete();
-            return redirect('masyarakat/pengaduan')->with('success','Pengaduan Berhasil Dihapus');
+            return redirect('masyarakat/pengaduan-ms')->with('success','Pengaduan Berhasil Dihapus');
         }catch(\Throwable $th){
-            return redirect('masyarakat/pengaduan')->withErrors('Data gagal dihapus. Harap hapus data yang terkait');
+            return redirect('masyarakat/pengaduan-ms')->withErrors('Data gagal dihapus. Harap hapus data yang terkait');
         }
     }
 }

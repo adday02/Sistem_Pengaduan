@@ -44,8 +44,8 @@
                             <div class="dropdown-menu dropdown-menu-right animated slideInRight">
                                 <ul class="dropdown-user">
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="{{URL('/masyarakat/profile')}}"> Profile</a></li>
-                                    <li><a href="#"> Logout</a></li>
+                                    <li><a href="" data-toggle="modal" data-target="#edit{{auth()->user()->nik}}"> Profile</a></li>
+                                    <li><a href="{{URL('/keluar')}}"> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -100,5 +100,85 @@
     <script src="../js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="../js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script src="../js/lib/datatables/datatables-init.js"></script>
+
+    <div id="edit{{auth()->user()->nik}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- konten modal-->
+        <div class="modal-content">
+            <!-- heading modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- body modal -->
+            <div class="modal-body">
+            <form action="{{route('profile-masyarakat.update', auth()->user()->nik)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('PATCH')
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">NIK</label>
+                    <div class="col-sm-8">        
+                        <input type="text" name="nik" class="form-control" value="{{auth()->user()->nik}}" readonly>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Nama</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="nama" class="form-control" value="{{auth()->user()->nama}}" readonly>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Jenis Kelamin</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="jk" class="form-control" value="{{auth()->user()->jk}}" readonly>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Alamat </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="alamat" class="form-control" value="{{auth()->user()->alamat }}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Password </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="password" class="form-control" value="{{auth()->user()->password }}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Foto</label>
+                    <div class="col-sm-8">        
+                        <input type="file" name="foto"
+                        @if ($errors->has('foto'))
+                                    <span class="text-danger">{{ $errors->first('foto') }}</span>
+                                @endif
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Nomor HP </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="no_hp" class="form-control" value="{{auth()->user()->no_hp}}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
+                    </div>
+                </div>
+
+               
+               
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>             
+            </form>
+            </div>        
+        </div>
+    </div>
+</div>
 </body>
 </html>
