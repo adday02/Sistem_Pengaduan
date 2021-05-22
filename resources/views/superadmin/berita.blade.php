@@ -31,6 +31,7 @@
                                                 <th width="10%">Judul</th>
                                                 <th width="10%">Foto</th>
                                                 <th width="7%">Tanggal</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -63,7 +64,7 @@
             </div>
         </div>
             <!-- End Container fluid  -->
-            @foreach ($beritas as $berita)
+@foreach ($beritas as $berita)
 <!-- Modal Ubah Data  -->
 <div id="edit{{$berita->id_berita}}" class="modal fade" role="dialog">
     <div class="modal-dialog">

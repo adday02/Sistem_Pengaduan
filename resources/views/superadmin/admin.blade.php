@@ -93,19 +93,19 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">ID admin</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="id_admin" class="form-control" required>
+                        <input type="text" name="id_admin" class="form-control" required pattern=[0-9]{7} title="Masukkan ID Admin harus 7 karakter dan dengan nomor">
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Password</label>
                     <div class="col-sm-8">        
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password" name="password" class="form-control" required pattern=".{8,255}" title="Masukkan password min 8 karakter">
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Nama admin</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" required>
+                        <input type="text" name="nama" class="form-control" required pattern="[a-zA-Z\s]+" title="Masukkan nama admin hanya dengan Abjad">
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Foto</label>
                     <div class="col-sm-8">        
-                        <input type="file" name="foto" class="form-control" id="inputGroupFile01">
+                        <input type="file" name="foto" class="form-control" id="inputGroupFile01" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -153,14 +153,14 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Nama admin</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" value="{{ $admin->nama}}" required>
+                        <input type="text" name="nama" class="form-control" value="{{ $admin->nama}}" required pattern="[a-zA-Z\s]+" title="Masukkan nama admin hanya dengan Abjad">
                     </div>
                 </div>
 
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Password </label>
                     <div class="col-sm-8">
-                        <input type="password" name="password" class="form-control" value="{{ $admin->password }}" required>
+                        <input type="password" name="password" class="form-control" value="{{ $admin->password }}" required pattern=".{8,}" title="Masukkan password min 8 karakter">
                     </div>
                 </div>
 
@@ -187,66 +187,4 @@
     </div>
 </div>
 @endforeach
-
-@foreach ($admins as $admin)
-<!-- Modal Ubah Data  -->
-<div id="detail{{$admin->id_admin}}" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- konten modal-->
-        <div class="modal-content">
-            <!-- heading modal -->
-            <div class="modal-header">
-              <img  align:center; src="{{URL::to('/')}}/logo/{{$admin->logo}}" class="fa-image" width="100px" href="URL::to('/')}}/logo/{{$admin->logo}}" >
-            </div>
-            <!-- body modal -->
-            <div class="modal-body">
-            <form action="{{route('admin.update', $admin->id_admin)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">                
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">ID admin</label>
-                    <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" value="{{ $admin->id_admin}}" readonly>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Nama admin</label>
-                    <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" value="{{ $admin->nama}}" readonly>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Email</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="email" class="form-control" value="{{ $admin->email }}" readonly>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Link Website</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="website" class="form-control" value="{{ $admin->website }}" readonly>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Alamat </label>
-                    <div class="col-sm-8">
-                        <input type="text" name="alamat" class="form-control" value="{{ $admin->alamat }}" readonly>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Deskripsi </label>
-                    <div class="col-sm-8">
-                    <textarea class="form-control"name="deskripsi" readonly>{{$admin->deskripsi}}</textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>             
-            </form>
-            </div>        
-        </div>
-    </div>
-</div>
-@endforeach
+@endsection

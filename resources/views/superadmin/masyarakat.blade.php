@@ -99,19 +99,19 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">NIK</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nik" class="form-control" required>
+                        <input type="text" name="nik" class="form-control" required pattern="[0-9]+" title="Masukkan NIK harus 16 Karakter Nomor>
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Password</label>
                     <div class="col-sm-8">        
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password" name="password" class="form-control" required pattern=".{8,}" title="Masukkan password min 8 karakter">
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Nama Lengkap</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" required>
+                        <input type="text" name="nama" class="form-control" required pattern="[a-zA-Z\s]+" title="Masukkan nama admin hanya dengan Abjad">
                     </div>
                 </div>
 
@@ -129,7 +129,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">No HP </label>
                     <div class="col-sm-8">
-                        <input type="text" name="no_hp" class="form-control" required>
+                        <input type="text" name="no_hp" class="form-control" required pattern="[0-9] {11,13}" title="Masukkan No HP hanya dengan Angka, Min 11 Max 13">
                     </div>
                 </div>
 
@@ -182,20 +182,20 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Password</label>
                     <div class="col-sm-8">        
-                        <input type="password" name="password" class="form-control" value="{{$masyarakat->password}}" required>
+                        <input type="password" name="password" class="form-control" value="{{$masyarakat->password}}" required pattern=".{8,}" title="Masukkan password min 8 karakter">
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Nama Lengkap</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" value="{{$masyarakat->nama}}" required>
+                        <input type="text" name="nama" class="form-control" value="{{$masyarakat->nama}}" required pattern="[a-zA-Z\s]+" title="Masukkan nama admin hanya dengan Abjad">
                     </div>
                 </div>
 
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">No HP </label>
                     <div class="col-sm-8">
-                        <input type="text" name="no_hp" class="form-control" value="{{$masyarakat->no_hp}}" required>
+                        <input type="text" name="no_hp" class="form-control" value="{{$masyarakat->no_hp}}" required pattern="[0-9] {11,13}" title="Masukkan No HP hanya dengan Angka, Min 11 Max 13">
                     </div>
                 </div>
 
@@ -223,3 +223,4 @@
     </div>
 </div>
 @endforeach
+@endsection
