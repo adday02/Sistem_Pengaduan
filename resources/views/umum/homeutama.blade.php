@@ -187,7 +187,7 @@
                   <p>Teruntuk wilayah Desa Mangga Kulon Dan sekitarnya.</p>
                 </div>
                 <div class="col-md-4">
-                  <a href="#" class="filled-button">Ayo Gabung</a>
+                  <a href="/login" class="filled-button">Ayo Gabung</a>
                 </div>
               </div>
             </div>
