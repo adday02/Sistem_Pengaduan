@@ -50,6 +50,6 @@ class Masyarakat_profileController extends Controller
                 'no_hp'=>$request->no_hp,
             );
             MasyarakatModel::wherenik($id)->update($data);
-        return redirect('masyarakat\pengaduan');
+        return redirect('masyarakat\pengaduan-ms');
     }
 }

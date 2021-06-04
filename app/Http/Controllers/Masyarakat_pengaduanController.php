@@ -57,6 +57,7 @@ class Masyarakat_pengaduanController extends Controller
             'nik'=>$request->nik, 
             'deskripsi'=>$request->deskripsi,
             'lokasi'=>$request->lokasi,
+            'tgl'=>$request->tgl,
             'foto'=>$new_name,
             'status'=>'Dalam Pengajuan',
             
@@ -66,35 +67,6 @@ class Masyarakat_pengaduanController extends Controller
         return redirect('masyarakat/pengaduan-ms')->with('success','Berita berhasil ditambah');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $foto = $request->file('foto');
@@ -107,15 +79,9 @@ class Masyarakat_pengaduanController extends Controller
             );
         PengaduanModel::whereid_pengaduan($id)->update($data);
         }
-
-        $data = array(
-            
-            
+        $data = array(   
             'deskripsi'=>$request->deskripsi,
-            'lokasi'=>$request->lokasi,
-            'foto'=>$new_name,
-           
-           
+            'lokasi'=>$request->lokasi,         
         );
         PengaduanModel::whereid_pengaduan($id)->update($data);
         return redirect('masyarakat/pengaduan-ms');

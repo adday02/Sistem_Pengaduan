@@ -61,7 +61,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebar-menu">
-                        <li> <a href="{{URL('/masyarakat/pengaduan')}}"><i class="fa fa-book"></i><span>Pengaduan</span></a>
+                        <li> <a href="{{URL('masyarakat/pengaduan-ms')}}"><i class="fa fa-book"></i><span>Pengaduan</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -148,7 +148,14 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Password </label>
                     <div class="col-sm-8">
-                        <input type="text" name="password" class="form-control" value="{{auth()->user()->password }}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
+                        <input type="password" name="password" class="form-control" value="{{auth()->user()->password }}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
+                    </div>
+                </div>
+                
+                <div class="row form-group">
+                    <label class="col-sm-4 control-label">Nomor HP </label>
+                    <div class="col-sm-8">
+                        <input type="text" name="no_hp" class="form-control" value="{{auth()->user()->no_hp}}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
                     </div>
                 </div>
 
@@ -162,15 +169,6 @@
                     </div>
                 </div>
 
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Nomor HP </label>
-                    <div class="col-sm-8">
-                        <input type="text" name="no_hp" class="form-control" value="{{auth()->user()->no_hp}}" required pattern=".{,255}" title="Nomor Max 255 Karakter">
-                    </div>
-                </div>
-
-               
-               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Confirm</button>

@@ -2,84 +2,83 @@
 @section('title','masyarakat' )
 @section('content')
 <div class="page-wrapper">
-            <!-- Bread crumb -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Masayrakat</h3> </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                        <li class="breadcrumb-item active">Masayrakat</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- End Bread crumb -->
-            <!-- Container fluid  -->
-            <div class="container-fluid">
-                <!-- Start Page Content -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Data Export</h4>
-                                <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >+ Tambah Admin</button></div> 
-                                <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th width = "5%">No</th>
-                                                <th width="25%">Nama</th>
-                                                <th width="10%">JK</th>
-                                                <th width="10%">No HP</th>
-                                                <th width="25%">Alamat</th>
-                                                <th width="15">Foto</th>
-                                                <th width="10%">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>JK</th>
-                                                <th>No HP</th>
-                                                <th>Alamat</th>
-                                                <th>Foto</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        @foreach($masyarakats as $masyarakat)
-                                            <tr>
-                                            <td >{{++$i}}</td>
-                                            <td >{{$masyarakat->nama}}</td>
-                                            <td >{{$masyarakat->jk}}</td>
-                                            <td >{{$masyarakat->no_hp}}</td>
-                                            <td >{{$masyarakat->alamat}}</td>
-                                            <td  ><img width="100px" src="{{URL::to('/')}}/foto/{{$masyarakat->foto}}" href="URL::to('/')}}/foto/{{$masyarakat->foto}}" ></td>
-                                            <td >
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$masyarakat->nik}}" >Edit</button>
-                                                <div style="float:right;">
-                                                    <form form action="{{route('masyarakat.destroy', $masyarakat->nik)}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
-                                                    </form>
-                                                </div>
-                                                </td>
-                                            </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+    <!-- Bread crumb -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">Masayrakat</h3> </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                <li class="breadcrumb-item active">Masayrakat</li>
+            </ol>
+        </div>
+    </div>
+    <!-- End Bread crumb -->
+    <!-- Container fluid  -->
+    <div class="container-fluid">
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Data Export</h4>
+                        <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >+ Tambah Admin</button></div> 
+                        <div class="table-responsive m-t-40">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th width = "5%">No</th>
+                                        <th width="25%">Nama</th>
+                                        <th width="10%">JK</th>
+                                        <th width="10%">No HP</th>
+                                        <th width="15%">Alamat</th>
+                                        <th width="10">Foto</th>
+                                        <th width="15%">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>JK</th>
+                                        <th>No HP</th>
+                                        <th>Alamat</th>
+                                        <th>Foto</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                @foreach($masyarakats as $masyarakat)
+                                    <tr>
+                                    <td >{{++$i}}</td>
+                                    <td >{{$masyarakat->nama}}</td>
+                                    <td >{{$masyarakat->jk}}</td>
+                                    <td >{{$masyarakat->no_hp}}</td>
+                                    <td >{{$masyarakat->alamat}}</td>
+                                    <td  ><img width="100px" src="{{URL::to('/')}}/foto/{{$masyarakat->foto}}" href="URL::to('/')}}/foto/{{$masyarakat->foto}}" ></td>
+                                    <td >
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$masyarakat->nik}}" >Edit</button>
+                                        <div style="float:right;">
+                                            <form form action="{{route('masyarakat.destroy', $masyarakat->nik)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
+                                            </form>
+                                        </div>
+                                        </td>
+                                    </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <!-- End PAge Content -->
             </div>
         </div>
-            <!-- End Container fluid  -->
+        <!-- End PAge Content -->
+    </div>
+</div>
 
  <div id="tambah" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -99,7 +98,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">NIK</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nik" class="form-control" required pattern="[0-9]+" title="Masukkan NIK harus 16 Karakter Nomor>
+                        <input type="text" name="nik" class="form-control" required pattern="[0-9]+" title="Masukkan NIK harus 16 Karakter Nomor">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -195,7 +194,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">No HP </label>
                     <div class="col-sm-8">
-                        <input type="text" name="no_hp" class="form-control" value="{{$masyarakat->no_hp}}" required pattern="[0-9] {11,13}" title="Masukkan No HP hanya dengan Angka, Min 11 Max 13">
+                        <input type="text" name="no_hp" class="form-control" value="{{$masyarakat->no_hp}}" required>
                     </div>
                 </div>
 
@@ -205,8 +204,6 @@
                         <input type="text" name="alamat" class="form-control" value="{{$masyarakat->alamat}}" required>
                     </div>
                 </div>
-
-
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Foto</label>
                     <div class="col-sm-8">        

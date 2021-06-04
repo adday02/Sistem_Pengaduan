@@ -34,57 +34,49 @@
                   </div>
                 </div>
                 @endif
-                                <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >Tambah Berita</button></div> 
-                                <div class="clearfix"></div>
-                                <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Judul Berita</th>
-                                                <th>Deskripsi Berita</th>
-                                                <th>Foto</th>
-                                                <th>Posted On</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($berita as $b)
-                                            <tr>
-                                            <td>{{++$i}}</td>
-                         
-                                            
-                                            <td>{{$b->judul}}</td>
-                                            <td>{{$b->deskripsi}}</td>
-                                            <td><img width="50 px" src="{{URL::to('/')}}/foto/{{$b->foto}}" class="fa-image" width="100px" href="URL::to('/')}}/foto/{{$b->foto}}" ></td></td>
-                                            <td>{{date('d-m-Y', strtotime($b->created_at))}}</td>
-                                                <td>
-                                                <div style="float:left;">
-                                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit{{$b->id_berita}}" >Edit</button>
-                                                </div>
-                                                
-                                                <div style="float:right;">
-                                                <form action="{{route('berita.destroy', $b->id_berita)}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
-                                                </form>
-                                                </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >Tambah Berita</button></div> 
+                    <div class="table-responsive m-t-40">
+                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul Berita</th>
+                                    <th>Deskripsi Berita</th>
+                                    <th>Foto</th>
+                                    <th>Posted On</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($berita as $b)
+                            @if((auth()->user()->id_admin)==($b->id_admin))
+                                <tr>
+                                <td>{{++$i}}</td>
+                                <td>{{$b->judul}}</td>
+                                <td>{{$b->deskripsi}}</td>
+                                <td><img width="50 px" src="{{URL::to('/')}}/foto/{{$b->foto}}" class="fa-image" width="100px" href="URL::to('/')}}/foto/{{$b->foto}}" ></td></td>
+                                <td>{{date('d-m-Y', strtotime($b->created_at))}}</td>
+                                    <td>
+                                    <div style="float:left;">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit{{$b->id_berita}}" >Edit</button>
+                                    </div>
+                                    
+                                    <div style="float:right;">
+                                    <form action="{{route('berita.destroy', $b->id_berita)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
+                                    </form>
+                                    </div>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                <!-- End PAge Content -->
             </div>
         </div>
-            <!-- End Container fluid  -->
-
         <!-- Modal tambah -->
 <div id="tambah" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -99,14 +91,12 @@
             </div>
             <!-- body modal -->
             <div class="modal-body">
-            
               <form action="{{route('berita.store')}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
-
-                
-
                 <input class="form-control" name="judul"type="text" placeholder="Judul Berita" required pattern=".{,20}" title="Judul Max 20 Karakter" ></br>
                 <textarea class="form-control"name="deskripsi" type="text" placeholder="Deskripsi Berita" required pattern=".{,255}" title="Deskripsi Max 255 Karakter"></textarea></br>
+                <input class="form-control" name="tgl"type="date" placeholder="Tanggal" required></br>
+                <input name ="id_admin" type="hidden" value="{{auth()->user()->id_admin}}">
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Foto</label>
                     <div class="col-sm-8">        
@@ -116,8 +106,6 @@
                                 @endif
                     </div>
                 </div>
-               
-                
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Tambah Berita</button>
                 </div>
@@ -126,18 +114,18 @@
         </div>
     </div>
 </div>
-<!-- /Modal tambah -->
+</div>
+</div>
+</div>
+</div>
 
 @foreach ($berita as $b)
-<!-- Modal Ubah Data  -->
 <div id="edit{{$b->id_berita}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- konten modal-->
         <div class="modal-content">
             <!-- heading modal -->
-            
             <div class="modal-header">
-            
                 <h5 class="modal-title" id="mediumModalLabel">Edit Berita</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -148,55 +136,52 @@
             <form action="{{route('berita.update', $b->id_berita)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                
-                
-
-
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Judul Berita</label>
                     <div class="col-sm-8">        
                         <input type="text" name="judul" class="form-control" value="{{ $b->judul}}" required>
                     </div>
                     @error('judul')
-            <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Deskripsi Berita</label>
-                    <div class="col-sm-8">
-                    <input class="form-control"name="deskripsi" type="text" value="{{$b->deskripsi}}"></input></br>
+                <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('deskripsi')
-            <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-               
-                <div class="row form-group">
-                    <label class="col-sm-4 control-label">Foto</label>
-                    <div class="col-sm-8">        
-                        <input type="file" name="foto" select="{{$b->foto}}">
-                        @error('foto')
-            <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label">Deskripsi Berita</label>
+                        <div class="col-sm-8">
+                        <input class="form-control"name="deskripsi" type="text" value="{{$b->deskripsi}}"></input></br>
+                        </div>
+                        @error('deskripsi')
+                <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                </div>
-
-               
-
                 
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Confirm</button>
-                </div>             
-            </form>
-            </div>        
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label">Tanggal</label>
+                        <div class="col-sm-8">        
+                            <input class="form-control"name="tgl" type="date" value="{{$b->tgl}}"></input></br>
+                        @error('foto')
+                <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-4 control-label">Foto</label>
+                        <div class="col-sm-8">        
+                            <input type="file" name="foto" select="{{$b->foto}}">
+                            @error('foto')
+                <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Confirm</button>
+                    </div>             
+            </form>    
+            </div> 
         </div>
     </div>
 </div>
-
-
 <!-- Modal Edit -->
 
 foreach ($berita as $b)
@@ -241,12 +226,6 @@ foreach ($berita as $b)
                     <textarea class="form-control"name="deskripsi" readonly>{{$b->deskripsi}}</textarea>
                     </div>
                 </div>
-
-               
-
-                
-              
-               
             <br>
               
           </div>

@@ -26,7 +26,7 @@ class LoginController extends Controller
     	}
     	else if (count($data3)>0) {
     		Auth::guard('masyarakat')->LoginUsingId($data3[0]['nik']);
-    		return redirect('/masyarakat/homeuser');
+    		return redirect('/masyarakat/pengaduan-ms');
     	}
     	else{
     		return redirect('/login')->with('Login Gagal');

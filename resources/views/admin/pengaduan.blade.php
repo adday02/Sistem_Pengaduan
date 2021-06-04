@@ -50,7 +50,7 @@
                                                 <th>{{++$i}}</th>
                                                 <td>{{{$p->MasyarakatModel->nama}}}</td>
                                                 <td>{{{$p->lokasi}}} </td>
-                                                <td><img width="100px" src="{{URL::to('/')}}/foto/{{$pengaduan->foto}}" href="URL::to('/')}}/foto/{{$p->foto}}" > </td>
+                                                <td><img width="100px" src="{{URL::to('/')}}/foto/{{$p->foto}}" href="URL::to('/')}}/foto/{{$p->foto}}" > </td>
                                                 <td>{{{$p->status}}}</td>
                                                 <td>
                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$p->id_pengaduan}}" >Edit</button>
@@ -90,19 +90,19 @@
             </div>
             <!-- body modal -->
             <div class="modal-body">
-            <form action="{{route('pengaduan.update', $pengaduan->id_pengaduan)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
+            <form action="{{route('pengaduan.update', $p->id_pengaduan)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Nama Lengkap</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" value="{{$pengaduan->MasyarakatModel->nama}}" readonly>
+                        <input type="text" name="nama" class="form-control" value="{{$p->MasyarakatModel->nama}}" readonly>
                     </div>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Lokasi</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nama" class="form-control" value="{{$pengaduan->lokasi}}" readonly>
+                        <input type="text" name="nama" class="form-control" value="{{$p->lokasi}}" readonly>
                     </div>
                 </div>
 
@@ -127,4 +127,4 @@
     </div>
 </div>
 @endforeach
-            @endsection
+@endsection

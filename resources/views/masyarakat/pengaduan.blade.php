@@ -61,6 +61,7 @@
                                 </tfoot>
                                 <tbody>
                                     @foreach($pengaduan as $p)
+                                    @if((auth()->user()->nik)==($p->nik))
                                     <tr>
                                        <td> {{++$i}}</td>
                                        <td> {{date('d-m-Y', strtotime($p->created_at))}}</td>
@@ -77,9 +78,9 @@
                                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
                                                     </form>
                                                 </div>
-                                                </td>
                                         </td>
                                     </tr>
+                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>
@@ -105,9 +106,7 @@
             <div class="modal-body">
               <form action="{{route('pengaduan-ms.store')}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
-
                 <input type="hidden" name="nik" value="{{auth()->user()->nik}}">
-
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Tanggal </label>
                     <div class="col-sm-8">        

@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin_beritaController;
 use App\Http\Controllers\Admin_PengaduanController;
 use App\Http\Controllers\Admin_dashboardController;
 use App\Http\Controllers\Masyarakat_pengaduanController;
- 
+use App\Http\Controllers\Masyarakat_dashboardController;
 use App\Http\Controllers\Masyarakat_profileController;
 
 /*
@@ -35,7 +35,6 @@ Route::group(['prefix'=> 'superadmin',  'middleware'=> 'auth:superadmin'], funct
 
 Route::group(['prefix'=> 'masyarakat',  'middleware'=> 'auth:masyarakat'], function() {
     Route::resource('pengaduan-ms',Masyarakat_pengaduanController::class);
-    
     Route::resource('profile-masyarakat',Masyarakat_profileController::class);
     
 });

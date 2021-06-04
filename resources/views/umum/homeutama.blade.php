@@ -10,7 +10,8 @@
       <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
           <div class="text-content">
-            <h4>SELAMAT DATANG</h4>
+            <h4>SELAMAT DATANG <br>
+            <h2>MASYARAKAT KECAMATAN MANGGA KULON</h2>
          
           </div>
         </div>
@@ -22,8 +23,8 @@
         </div>
         <div class="banner-item-03">
           <div class="text-content">
-            <h4>Tuangkan Pengaduanmu</h4>
-            <h2>Untuk Wilayah Desa Mangga Kulon Dan Sekitarnya</h2>
+            <h4>TUANGKAN PENGADUANMU</h4>
+            <h2>DI SINI</h2>
           </div>
         </div>
       </div>
