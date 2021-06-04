@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         if (count($data1)>0) {
     		Auth::guard('admin')->LoginUsingId($data1[0]['id_admin']);
-    		return redirect('/admin/dashboard');
+            return redirect('/admin/dashboard');
     	}
     	else if (count($data2)>0) {
     		Auth::guard('superadmin')->LoginUsingId($data2[0]['id_superadmin']);
