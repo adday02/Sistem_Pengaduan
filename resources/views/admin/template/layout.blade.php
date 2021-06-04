@@ -68,14 +68,14 @@
                     <ul id="sidebar-menu">
                         <li class="nav-devider"></li>
                         <li class="nav-label">Home</li>
-                        <li> <a href="{{URL('/admin/dashboard')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
+                        <li> <a href="{{URL('/admin/dashboard-admin')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
                         </li>
                         
                         <li class="nav-label">Features</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Features</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{URL('/admin/pengaduan')}}">Pengaduan</a></li>
-                                <li><a href="{{URL('/admin/berita')}}">Berita</a></li>
+                                <li><a href="{{URL('/admin/pengaduan-admin')}}">Pengaduan</a></li>
+                                <li><a href="{{URL('/admin/berita-admin')}}">Berita</a></li>
                             </ul>
                         </li>
                     </ul>

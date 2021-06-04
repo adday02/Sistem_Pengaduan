@@ -12,31 +12,15 @@ class SuperAdmin_pengaduanController extends Controller
         $pengaduans = PengaduanModel::all();
         return view('superadmin/pengaduan',compact('pengaduans'))->with('i');
     }
-    
-    public function store(Request $request)
-    {
-        $foto = $request->file('foto');
-        $new_name = rand().'.'.$foto->getClientOriginalExtension();
-        $foto->move(public_path('foto'), $new_name);
-
-        $data = array(
-            'nik'=>$request->nik,
-            'deskripsi'=>$request->deskripsi,
-            'lokasi'=>$request->lokasi,
-            'tgl'=>$request->tgl,
-            'status'=>$request->status,
-            'foto'=>$new_name,
-        );
-        PengaduanModel::create($data);
-        return redirect('superadmin\pengaduan')->with('success','pengaduan berhasil ditambah');
-    }
-    
     public function update(Request $request, $id)
-    {            
-        $data = array(
-            'status'=>$request->status,
-        );
+    {          
+        if($request->has('status'))
+        {
+            $data = array(
+                'status'=>$request->status,
+            );
         PengaduanModel::whereid_pengaduan($id)->update($data);
+        }
         return redirect('superadmin/pengaduan');
     }
 
