@@ -57,7 +57,6 @@ class Masyarakat_pengaduanController extends Controller
             'nik'=>$request->nik, 
             'deskripsi'=>$request->deskripsi,
             'lokasi'=>$request->lokasi,
-            'tgl'=>$request->tgl,
             'foto'=>$new_name,
             'status'=>'Dalam Pengajuan',
             

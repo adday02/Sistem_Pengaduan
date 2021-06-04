@@ -22,6 +22,18 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Data Export</h4>
+                                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"aria-label="close">
+                        <span aria-hidden= "true"></span>
+                    </button>
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            {{$error}} <br>
+                            @endforeach
+                    </div>
+                </div>
+                @endif  
                                 <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >+ Tambah Admin</button></div> 
                                 <div class="table-responsive m-t-40">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">

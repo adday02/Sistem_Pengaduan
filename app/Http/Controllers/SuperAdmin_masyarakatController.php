@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MasyarakatModel;
+use Validator;
 
 class SuperAdmin_masyarakatController extends Controller
 {
@@ -15,6 +16,24 @@ class SuperAdmin_masyarakatController extends Controller
     
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            
+            
+            'nik'          => 'required|unique:masyarakat',
+            'foto'          => 'required|image:jpeg,jpg,png',
+            'no_hp'           => 'required|string|min:10|max:15|regex:/^[0-9]*$/'
+        ], [
+           
+           
+            'nik.unique'           => 'Nik sudah terdaftar',
+            'nik.required'          => 'Nik Wajib diisi',
+            'foto.required'         => 'foto wajib diisi.',
+            'foto.image'            => 'foto tidak valid.',
+            'no_hp.required'      => 'Nomor hp belum diisi',
+            'no_hp.regex'         => 'Format nomer hp harus berupa bilangan bulat',
+            'no_hp.min'           => 'batas nomer telpon minimal 10 digit',
+            'no_hp.max'           => 'batas nomer telpon maksimal 15 digit'
+        ]);
         $foto = $request->file('foto');
         $new_name = rand().'.'.$foto->getClientOriginalExtension();
         $foto->move(public_path('foto'), $new_name);
@@ -23,10 +42,11 @@ class SuperAdmin_masyarakatController extends Controller
             'nik'=>$request->nik,
             'nama'=>$request->nama,
             'jk'=>$request->jk,
-            'password'=>$request->password,
+            'password'=>bcrypt($request->password),
             'no_hp'=>$request->no_hp,
             'foto'=>$new_name,
             'alamat'=>$request->alamat,
+            'status_pengaduan'=>'Dalam Pengajuan',
         );
         MasyarakatModel::create($data);
         return redirect('superadmin\masyarakat')->with('success','masyarakat berhasil ditambah');
@@ -34,6 +54,23 @@ class SuperAdmin_masyarakatController extends Controller
     
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            
+           
+            
+            'foto'          => 'required|image:jpeg,jpg,png',
+            'no_hp'           => 'required|string|min:10|max:15|regex:/^[0-9]*$/'
+        ], [
+           
+           
+           
+            'foto.required'         => 'foto wajib diisi.',
+            'foto.image'            => 'foto tidak valid.',
+            'no_hp.required'      => 'Nomor hp belum diisi',
+            'no_hp.regex'         => 'Format nomer hp harus berupa bilangan bulat',
+            'no_hp.min'           => 'batas nomer telpon minimal 10 digit',
+            'no_hp.max'           => 'batas nomer telpon maksimal 15 digit'
+        ]);
         $foto = $request->file('foto');
         if($request->hasFile('foto'))
         {
@@ -46,9 +83,10 @@ class SuperAdmin_masyarakatController extends Controller
         }
             $data = array(
                 'nama'=>$request->nama,
-                'password'=>$request->password,
+                'password'=>bcrypt($request->password),
                 'no_hp'=>$request->no_hp,
                 'alamat'=>$request->alamat,
+                'status_pengaduan'=>$request->status_pengaduan,
             );
         MasyarakatModel::wherenik($id)->update($data);
         return redirect('superadmin/masyarakat');

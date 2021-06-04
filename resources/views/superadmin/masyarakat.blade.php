@@ -22,6 +22,18 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Data Export</h4>
+                        @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"aria-label="close">
+                        <span aria-hidden= "true"></span>
+                    </button>
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            {{$error}} <br>
+                            @endforeach
+                    </div>
+                </div>
+                @endif  
                         <div style="float:right;"><button type="danger" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah" >+ Tambah Admin</button></div> 
                         <div class="table-responsive m-t-40">
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -86,7 +98,7 @@
         <div class="modal-content">
             <!-- heading modal -->
             <div class="modal-header">
-                <h5 class="modal-title" id="mediumModalLabel">Tambah admin</h5>
+                <h5 class="modal-title" id="mediumModalLabel">Tambah Masyarakat</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -128,7 +140,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">No HP </label>
                     <div class="col-sm-8">
-                        <input type="text" name="no_hp" class="form-control" required pattern="[0-9] {11,13}" title="Masukkan No HP hanya dengan Angka, Min 11 Max 13">
+                        <input type="text" name="no_hp" class="form-control" >
                     </div>
                 </div>
 

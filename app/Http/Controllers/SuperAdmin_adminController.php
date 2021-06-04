@@ -14,13 +14,28 @@ class SuperAdmin_adminController extends Controller
     
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            
+            
+            'id_admin'          => 'required|unique:admin',
+            'foto'          => 'required|image:jpeg,jpg,png'
+            
+        ], [
+           
+           
+            'id_admin.unique'           => 'id sudah terdaftar',
+            'id_admin.required'          => 'id Wajib diisi',
+            'foto.required'         => 'foto wajib diisi.',
+            'foto.image'            => 'foto tidak valid.'
+           
+        ]);
         $foto = $request->file('foto');
         $new_name = rand().'.'.$foto->getClientOriginalExtension();
         $foto->move(public_path('foto'), $new_name);
 
         $data = array(
             'id_admin'=>$request->id_admin,
-            'password'=>$request->password,
+            'password'=>bcrypt($request->password),
             'nama'=>$request->nama,
             'foto'=>$new_name,
             'alamat'=>$request->alamat,
@@ -31,6 +46,20 @@ class SuperAdmin_adminController extends Controller
     
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            
+           
+            
+            'foto'          => 'required|image:jpeg,jpg,png',
+            
+        ], [
+           
+           
+           
+            'foto.required'         => 'foto wajib diisi.',
+            'foto.image'            => 'foto tidak valid.',
+            
+        ]);
         $foto = $request->file('foto');
         if($request->hasFile('foto'))
         {
@@ -42,7 +71,7 @@ class SuperAdmin_adminController extends Controller
         AdminModel::whereid_admin($id)->update($data);
         }
             $data = array(
-                'password'=>$request->password,
+                'password'=>bcrypt($request->password),
                 'nama'=>$request->nama,
                 'alamat'=>$request->alamat,
             );

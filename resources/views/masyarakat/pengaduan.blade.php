@@ -107,12 +107,12 @@
               <form action="{{route('pengaduan-ms.store')}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="nik" value="{{auth()->user()->nik}}">
-                <div class="row form-group">
+                <!--<div class="row form-group">
                     <label class="col-sm-4 control-label">Tanggal </label>
                     <div class="col-sm-8">        
                         <input type="date" name="tgl" class="form-control" required>
                     </div>
-                </div>
+                </div>-->
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">lokasi</label>
                     <div class="col-sm-8">        
