@@ -55,7 +55,7 @@
                                                 <td>
                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$p->id_pengaduan}}" >Edit</button>
                                                 <div style="float:right;">
-                                                    <form form action="{{route('pengaduan.destroy', $p->id_pengaduan)}}" method="POST">
+                                                    <form form action="{{route('pengaduan-admin.destroy', $p->id_pengaduan)}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
@@ -90,9 +90,9 @@
             </div>
             <!-- body modal -->
             <div class="modal-body">
-            <form action="{{route('pengaduan.update', $p->id_pengaduan)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
+            <form action="{{route('pengaduan-admin.update', $p->id_pengaduan)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('PATCH')
+                @method('PATCH')    
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Nama Lengkap</label>
                     <div class="col-sm-8">        

@@ -55,14 +55,14 @@
                                 <td>{{$b->judul}}</td>
                                 <td>{{$b->deskripsi}}</td>
                                 <td><img width="50 px" src="{{URL::to('/')}}/foto/{{$b->foto}}" class="fa-image" width="100px" href="URL::to('/')}}/foto/{{$b->foto}}" ></td></td>
-                                <td>{{date('d-m-Y', strtotime($b->created_at))}}</td>
+                                <td>{{$b->tgl}}</td>
                                     <td>
                                     <div style="float:left;">
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit{{$b->id_berita}}" >Edit</button>
                                     </div>
                                     
                                     <div style="float:right;">
-                                    <form action="{{route('berita.destroy', $b->id_berita)}}" method="POST">
+                                    <form action="{{route('berita-admin.destroy', $b->id_berita)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</i></a>
@@ -91,7 +91,7 @@
             </div>
             <!-- body modal -->
             <div class="modal-body">
-              <form action="{{route('berita.store')}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
+              <form action="{{route('berita-admin.store')}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
                 <input class="form-control" name="judul"type="text" placeholder="Judul Berita" required pattern=".{,20}" title="Judul Max 20 Karakter" ></br>
                 <textarea class="form-control"name="deskripsi" type="text" placeholder="Deskripsi Berita" required pattern=".{,255}" title="Deskripsi Max 255 Karakter"></textarea></br>
@@ -133,7 +133,7 @@
             </div>
             <!-- body modal -->
             <div class="modal-body">
-            <form action="{{route('berita.update', $b->id_berita)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
+            <form action="{{route('berita-admin.update', $b->id_berita)}}" class="form-horizontal tasi-form" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="row form-group">

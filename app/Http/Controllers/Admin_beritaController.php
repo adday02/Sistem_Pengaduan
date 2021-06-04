@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\BeritaModel;
 use App\Models\AdminModel;
@@ -9,38 +7,16 @@ use Validator;
 
 class Admin_beritaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $berita = BeritaModel::all();
         $admin = AdminModel::all();
         return view('admin/berita',compact('berita','admin'))->with('i');
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             
             'foto' => 'required|image:jpeg,jpg,png'
@@ -62,9 +38,8 @@ class Admin_beritaController extends Controller
             'foto'=>$new_name,
         );
         BeritaModel::create($data);
-        return redirect('admin/berita')->with('success','Berita berhasil ditambah');
+        return redirect('admin/berita-admin')->with('success','Berita berhasil ditambah');
     }
-
     public function update(Request $request, $id)
     {
 
@@ -85,25 +60,16 @@ class Admin_beritaController extends Controller
             'tgl'=>$request->tgl,           
         );
         BeritaModel::whereid_berita($id)->update($data);
-    return redirect('admin/berita');
-        
-
+    return redirect('admin/berita-admin');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try{
             $datas = BeritaModel::findOrfail($id);
             $datas->delete();
-            return redirect('admin/berita')->with('success','Berita Berhasil Dihapus');
+            return redirect('admin/berita-admin')->with('success','Berita Berhasil Dihapus');
         }catch(\Throwable $th){
-            return redirect('admin/berita')->withErrors('Data gagal dihapus. Harap hapus data yang terkait');
+            return redirect('admin/berita-admin')->withErrors('Data gagal dihapus. Harap hapus data yang terkait');
         }
     }
 }

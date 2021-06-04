@@ -14,16 +14,6 @@ use App\Http\Controllers\Masyarakat_pengaduanController;
 use App\Http\Controllers\Masyarakat_dashboardController;
 use App\Http\Controllers\Masyarakat_profileController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::group(['prefix'=> 'superadmin',  'middleware'=> 'auth:superadmin'], function(){
     Route::resource('admin',SuperAdmin_adminController::class);
@@ -41,9 +31,9 @@ Route::group(['prefix'=> 'masyarakat',  'middleware'=> 'auth:masyarakat'], funct
 
 //ADMIN
 Route::group(['prefix'=> 'admin',  'middleware'=> 'auth:admin'], function()  {
-    Route::resource('berita',Admin_beritaController::class);
-    Route::resource('pengaduan',Admin_PengaduanController::class);
-    Route::resource('dashboard',Admin_dashboardController::class);
+    Route::resource('berita-admin',Admin_beritaController::class);
+    Route::resource('pengaduan-admin',Admin_PengaduanController::class);
+    Route::resource('dashboard-admin',Admin_dashboardController::class);
    });
 
 Route::get('login', function () {

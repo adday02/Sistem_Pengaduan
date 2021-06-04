@@ -5,7 +5,7 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">Masayrakat</h3> </div>
+            <h3 class="text-primary">Masyarakat</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
@@ -140,7 +140,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">No HP </label>
                     <div class="col-sm-8">
-                        <input type="text" name="no_hp" class="form-control" >
+                        <input type="text" name="no_hp" class="form-control" required pattern="[0-9]+" title="Masukkan No HP hanya dengan Angka, Min 11 Max 13">
                     </div>
                 </div>
 

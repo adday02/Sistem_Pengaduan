@@ -75,7 +75,7 @@
             </div>
         </div>
             <!-- End Container fluid  -->
-            @foreach ($pengaduans as $pengaduan)
+@foreach ($pengaduans as $pengaduan)
 <!-- Modal Ubah Data  -->
 <div id="edit{{$pengaduan->id_pengaduan}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -109,15 +109,13 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">Status</label>
                     <div class="col-sm-8">        
-                    <select class="input100" type="text" name="status" required>
+                    <select class="input100" type="text" name="status">
                             <option disabled="" selected="" value="">--Pilih Jenis Status--</option>
                             <option value="Diterima">Diterima</option>
                             <option value="Ditolak">Ditolak</option>
                         </select>
                     </div>
                 </div>
-
-
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Confirm</button>
                 </div>             
@@ -127,4 +125,4 @@
     </div>
 </div>
 @endforeach
-            @endsection
+@endsection
