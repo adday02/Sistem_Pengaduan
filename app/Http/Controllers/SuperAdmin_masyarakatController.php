@@ -46,7 +46,7 @@ class SuperAdmin_masyarakatController extends Controller
             'no_hp'=>$request->no_hp,
             'foto'=>$new_name,
             'alamat'=>$request->alamat,
-            'status_pengaduan'=>'Dalam Pengajuan',
+            //'status_pengaduan'=>'Sedang Proses',
         );
         MasyarakatModel::create($data);
         return redirect('superadmin\masyarakat')->with('success','masyarakat berhasil ditambah');
@@ -86,7 +86,7 @@ class SuperAdmin_masyarakatController extends Controller
                 'password'=>bcrypt($request->password),
                 'no_hp'=>$request->no_hp,
                 'alamat'=>$request->alamat,
-                'status_pengaduan'=>$request->status_pengaduan,
+                //'status_pengaduan'=>$request->status_pengaduan,
             );
         MasyarakatModel::wherenik($id)->update($data);
         return redirect('superadmin/masyarakat');
