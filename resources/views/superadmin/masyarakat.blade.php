@@ -110,7 +110,7 @@
                 <div class="row form-group">
                     <label class="col-sm-4 control-label">NIK</label>
                     <div class="col-sm-8">        
-                        <input type="text" name="nik" class="form-control" required pattern="[0-9]+" title="Masukkan NIK harus 16 Karakter Nomor">
+                        <input type="text" name="nik" class="form-control" required pattern="[0-9]{16}" title="Masukkan NIK harus 16 Karakter Nomor">
                     </div>
                 </div>
                 <div class="row form-group">
