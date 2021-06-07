@@ -34,7 +34,7 @@ class Admin_beritaController extends Controller
             'id_admin'=>$request->id_admin,
             'judul'=>$request->judul,
             'deskripsi'=>$request->deskripsi,
-            'tgl'=>$request->tgl,
+            
             'foto'=>$new_name,
         );
         BeritaModel::create($data);
@@ -57,7 +57,7 @@ class Admin_beritaController extends Controller
         $data = array(
             'judul'=>$request->judul,
             'deskripsi'=>$request->deskripsi,           
-            'tgl'=>$request->tgl,           
+                      
         );
         BeritaModel::whereid_berita($id)->update($data);
     return redirect('admin/berita-admin');

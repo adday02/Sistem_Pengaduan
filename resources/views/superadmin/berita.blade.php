@@ -50,7 +50,7 @@
                                                 <td>{{{$berita->AdminModel->nama}}}</td>
                                                 <td>{{{$berita->judul}}} </td>
                                                 <td><img width="100px" src="{{URL::to('/')}}/foto/{{$berita->foto}}" href="URL::to('/')}}/foto/{{$berita->foto}}" > </td>
-                                                <td>{{{$berita->tgl}}}</td>
+                                                <td>{{date('d-m-Y', strtotime($berita->created_at))}}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
