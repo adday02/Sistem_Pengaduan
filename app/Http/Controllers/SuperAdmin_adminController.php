@@ -47,16 +47,8 @@ class SuperAdmin_adminController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            
-           
-            
-            'foto'          => 'required|image:jpeg,jpg,png',
-            
+            'foto'          => 'image:jpeg,jpg,png',
         ], [
-           
-           
-           
-            'foto.required'         => 'foto wajib diisi.',
             'foto.image'            => 'foto tidak valid.',
             
         ]);

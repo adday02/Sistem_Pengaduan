@@ -10,7 +10,7 @@ class PengaduanModel extends Model
 {
     protected $table = "pengaduan";
     protected $primaryKey = 'id_pengaduan';
-    protected $fillable =['id_pengaduan','nik','deskripsi','lokasi','foto','tgl','status'];
+    protected $fillable =['id_pengaduan','nik','deskripsi','lokasi','foto','status'];
 
     public function MasyarakatModel(){
         return $this->belongsTo('App\Models\MasyarakatModel', 'nik');

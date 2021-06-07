@@ -58,14 +58,13 @@ class SuperAdmin_masyarakatController extends Controller
             
            
             
-            'foto'          => 'required|image:jpeg,jpg,png',
+            'foto'          => 'image:jpeg,jpg,png',
             'no_hp'           => 'required|string|min:10|max:15|regex:/^[0-9]*$/'
         ], [
            
            
            
             'foto.required'         => 'foto wajib diisi.',
-            'foto.image'            => 'foto tidak valid.',
             'no_hp.required'      => 'Nomor hp belum diisi',
             'no_hp.regex'         => 'Format nomer hp harus berupa bilangan bulat',
             'no_hp.min'           => 'batas nomer telpon minimal 10 digit',

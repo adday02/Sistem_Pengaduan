@@ -103,7 +103,7 @@
                         <input type="file" name="foto" class="form-control" id="inputGroupFile01" required="" >
                         @if ($errors->has('foto'))
                                     <span class="text-danger">{{ $errors->first('foto') }}</span>
-                                @endif
+                        @endif
                     </div>
                 </div>
                 <div class="modal-footer">

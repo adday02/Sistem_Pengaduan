@@ -34,7 +34,6 @@ class Admin_beritaController extends Controller
             'id_admin'=>$request->id_admin,
             'judul'=>$request->judul,
             'deskripsi'=>$request->deskripsi,
-            
             'foto'=>$new_name,
         );
         BeritaModel::create($data);
